@@ -1,0 +1,39 @@
+{
+  "name": "image-converter",
+  "version": "0.1.0",
+  "description": "Convert images (incl. HEIC) to JPEG/PNG/WebP/AVIF using sharp + libheif-js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "image-convert": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "convert": "tsx src/cli.ts",
+    "prepublishOnly": "pnpm build"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "libheif-js": "^1.19.8",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
