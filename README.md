@@ -17,15 +17,30 @@ pnpm build
 
 ## CLI — single file
 
+In this repo, the fastest way to run the CLI is via the script alias (no build needed — uses `tsx`):
+
 ```bash
-# Build first, then run via the bin:
 pnpm image-convert photo.heic -f webp -q 80
 pnpm image-convert photo.jpg  -f avif -q 60 -o out.avif
 pnpm image-convert icon.png   -f jpeg -q 90
-
-# During development, without building:
-pnpm convert photo.heic -f webp -q 80
 ```
+
+Equivalent invocations:
+
+```bash
+pnpm run image-convert photo.heic -f webp -q 80   # explicit `run`
+pnpm convert          photo.heic -f webp -q 80    # alias
+node dist/cli.js      photo.heic -f webp -q 80    # after `pnpm build`
+```
+
+To install globally (so `image-convert` works anywhere on your system):
+
+```bash
+pnpm build && pnpm link --global
+image-convert photo.heic -f webp -q 80
+```
+
+> Note: `pnpm run <name>` only sees entries in `package.json#scripts`, not `#bin`. The `bin` field only activates when the package is installed as a dependency or linked globally — which is why we also expose `image-convert` as a script inside this repo.
 
 ## CLI — folder (batch mode)
 

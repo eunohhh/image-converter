@@ -21,6 +21,7 @@
     "build": "tsc",
     "dev": "tsx src/cli.ts",
     "convert": "tsx src/cli.ts",
+    "image-convert": "tsx src/cli.ts",
     "prepublishOnly": "pnpm build"
   },
   "engines": {
